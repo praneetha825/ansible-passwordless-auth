@@ -14,12 +14,13 @@ This method is used when connecting to remote machines (like EC2) where you alre
 
 ```bash
 ssh-copy-id -f "-o IdentityFile=<PATH-TO-PEM-FILE>" ubuntu@<INSTANCE-IP>
-
+```
 This command tells SSH to use  .pem file and copy the public key to the remote server's authorized list. This enables passwordless access.
 
 ### 🔸 Step 2: Test the SSH login
-
+```bash
 ssh -i ~/dev-key.pem ubuntu@13.233.56.78
+```
 Now we  should be  able to logged in without entering a password.
 
 ---
@@ -28,8 +29,9 @@ Now we  should be  able to logged in without entering a password.
 This is used when we are working on local servers or VMs without .pem files.
 
 🔸 Step 1: Generate SSH key pair
-
+```bash
 ssh-keygen
+```
 This creates:
 
 A private key (~/.ssh/id_rsa)
@@ -37,11 +39,13 @@ A private key (~/.ssh/id_rsa)
 A public key (~/.ssh/id_rsa.pub)
 
 🔸 Step 2: Copy the public key to the server
-
+```bash
 ssh-copy-id ubuntu@<INSTANCE-IP>
+```
 This adds  public key to the authorized_keys file on the remote machine.
 
 🔸 Step 3: Test  SSH login
-
+```bash
 ssh ubuntu@192.168.1.10
+```
 we should get in without a password!
